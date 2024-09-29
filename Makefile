@@ -1,11 +1,12 @@
+
 # Variables
-NODE_BIN :=./nodejs
+NODE_BIN := $(abspath ./nodejs)
 NPM := $(NODE_BIN)/npm
 NPX := $(NODE_BIN)/npx
 VENV := venv
-PYTHON := python  # Use `python` on Windows
+PYTHON := python3  # Use `python3` on Unix-like systems for GitHub Actions
 
-# Determine pip path based on OS
+# Check if running on Windows or Unix
 ifeq ($(OS),Windows_NT)
     PIP := $(VENV)/Scripts/pip
     PYTHON_BIN := $(VENV)/Scripts/python
@@ -14,13 +15,13 @@ else
     PYTHON_BIN := $(VENV)/bin/python
 endif
 
-# Create virtual environment (check if `venv/Scripts/activate` exists)
-$(VENV)/Scripts/activate $(VENV)/bin/activate:
+# Create virtual environment
+$(VENV)/bin/activate:
 	@echo "Creating virtual environment..."
 	$(PYTHON) -m venv $(VENV)
 
 # Install server dependencies inside the virtual environment
-install-server: $(VENV)/Scripts/activate
+install-server: $(VENV)/bin/activate
 	@echo "Installing server dependencies inside venv..."
 	$(PIP) install -r requirements.txt
 

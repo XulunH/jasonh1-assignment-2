@@ -1,6 +1,6 @@
 
 # Variables
-NODE_BIN := $(abspath ./nodejs)
+NODE_BIN :=./nodejs
 NPM := $(NODE_BIN)/npm
 NPX := $(NODE_BIN)/npx
 VENV := venv

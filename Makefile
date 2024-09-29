@@ -33,7 +33,7 @@ run-client:
 	cd client/kmeans && npm start
 
 # Run both server and client concurrently
-run: install
+run:
 	@echo "Starting server and client..."
 	$(MAKE) -j2 run-server run-client
 

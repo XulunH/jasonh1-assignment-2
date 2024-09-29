@@ -28,6 +28,7 @@ install-server: $(VENV)/bin/activate
 # Install client dependencies
 install-client:
 	@echo "Installing client dependencies..."
+	chmod +x $(NPM)  # Grant execute permission to npm
 	cd client/kmeans && $(NPM) install
 
 # Install all dependencies (server + client)
@@ -51,3 +52,4 @@ run:
 # Clear port 3000
 clear:
 	$(NPX) kill-port 3000
+

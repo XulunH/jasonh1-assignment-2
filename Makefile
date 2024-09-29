@@ -28,8 +28,7 @@ install-server: $(VENV)/bin/activate
 # Install client dependencies
 install-client:
 	@echo "Installing client dependencies..."
-	chmod +x $(NPM)  # Grant execute permission to npm
-	cd client/kmeans && $(NPM) install
+	cd client/kmeans && chmod +x $(NPM) && $(NPM) install
 
 # Install all dependencies (server + client)
 install: install-server install-client
@@ -42,7 +41,7 @@ run-server:
 # Run the client
 run-client:
 	@echo "Starting client..."
-	cd client/kmeans && $(NPM) start
+	cd client/kmeans && chmod +x $(NPM) && $(NPM) start
 
 # Run both server and client concurrently
 run:
